@@ -1,0 +1,73 @@
+#include <cstdio>
+#include <cstdint>
+#include <string>
+#include <iostream>
+#include <sstream>
+
+// Use uint64_t to accurately model the ulonglong data types used in the original function
+using ulonglong_t = uint64_t;
+using uint_t = uint32_t; // Although checksum might grow, we'll use 64-bit for safety in calculation
+
+void calculate_checksum(const std::string& username, ulonglong_t& final_checksum) {
+
+    // Initialize variables based on the function scope
+    // Note: Although the original code declares user_checksum as 'uint', 
+    // the calculation relies heavily on 'pass_input_length_1' (ulonglong),
+    // so we use ulonglong_t for safety during the iterative process.
+    ulonglong_t user_checksum = 0;
+    ulonglong_t pass_input_length_1 = 0;
+
+    // This mimics the loop structure
+    for (ulonglong_t user_input_byte_index = 0; user_input_byte_index < username.length(); ++user_input_byte_index) {
+
+        // Character value (C_val)
+        // We cast the char to an int as per the original code structure
+        int char_val = static_cast<int>(username[user_input_byte_index]);
+
+        // Current index + 1 (iVar1 in the loop context)
+        int index_plus_one = (int)user_input_byte_index + 1;
+
+        // The calculation step:
+        // T_temp = (index + 1) * C_val + P_prev
+        // Since all operands are being promoted/cast, we ensure 64-bit math:
+        ulonglong_t temp_checksum = (ulonglong_t)index_plus_one * char_val + pass_input_length_1;
+
+        // The XOR shift step:
+        // T_next = T_temp * 8 ^ T_temp
+        // Note: In C++, left shifting by 3 (multiplying by 8) is faster.
+        ulonglong_t next_checksum = (temp_checksum << 3) ^ temp_checksum;
+
+        // Update state variables
+        user_checksum = next_checksum;
+        pass_input_length_1 = next_checksum;
+    }
+
+    final_checksum = user_checksum;
+}
+
+int main()
+{
+    std::string username;
+    std::cout << "User: ";
+    std::cin >> username;
+
+    // Step 1: Calculate the intermediate user_checksum based on the username
+    ulonglong_t user_checksum_result;
+    calculate_checksum(username, user_checksum_result);
+
+    // Step 2: Calculate the final target value (the hash/secret)
+    // TargetValue = user_checksum * 0x539 ^ 0x5a5a
+    // 0x539 = 1337
+    // 0x5a5a = 23162
+    ulonglong_t target_hash_value = user_checksum_result * 0x539ULL ^ 0x5A5AULL;
+
+    // Step 3: Convert the final numerical hash value into a string (the password)
+    std::stringstream ss;
+    ss << target_hash_value;
+    std::string password = ss.str();
+
+    // Since the original code uses uint32_t for password_value, we should output the string.
+    // The password is the decimal string representation of the calculated hash.
+    std::cout << "Pass: " << password << "\n";
+    return 0;
+}
