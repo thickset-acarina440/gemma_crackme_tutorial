@@ -51,7 +51,7 @@ https://crackmes.one/crackme/69e13f938afd9d6c48b488fd
 https://github.com/nationalsecurityagency/ghidra
 
 - While working on this tutorial I vibe-coded with Claude Code a Ghidra plugin to rename functions and variables with AI. You can download the plugin from here:
-*TODO*
+https://github.com/markoglasgow/Ghidra_FastAIRenamer_Plugin
 
 To install it, simply move the zip file `ghidra_12.0.4_PUBLIC_20260427_FastAIRenamerPlugin.zip` to `${GHIDRA_HOME}\Extensions\Ghidra`, then run Ghidra by running `${GHIDRA_HOME}\ghidraRun.bat`. To activate the plugin, in the initial Ghidra screen on the top menu select `File -> Install Extensions`, then in the plugin browser check the checkbox next to `FastAIRenamerPlugin`, then click `Ok`. Ghidra will prompt you to restart itself, so do that right away. 
 
@@ -104,7 +104,13 @@ https://openrouter.ai/google/gemma-4-26b-a4b-it:free
 
 ... just keep in mind with these free APIs, they're slowly, unreliable, and all the data you send to them will probably be logged in their internal analytics and used in their next training run. Still, for the purposes of this tutorial, these APIs should let you follow along. 
 
-To configure the Ghidra plugin to use your OpenRouter login, open *TODO* 
+To configure the Ghidra plugin to use your OpenRouter login, open the plugin config and enter the following:
+```
+Base URL: https://openrouter.ai/api/
+API Key: <your OpenRouter API Key>
+Model Name: qwen/qwen3-235b-a22b-2507
+```
+This example will run the plugin against the qwen3 model [here](https://openrouter.ai/qwen/qwen3-235b-a22b-2507)
 
 ## Inspecting the Crackme
 
