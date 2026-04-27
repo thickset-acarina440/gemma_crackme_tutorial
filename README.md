@@ -45,7 +45,7 @@ It's not an easy journey, and many people give up and assume local AI models are
 - The crackme is an extremely simple Windows crackme downloaded from [Crackmes.one] here:
 https://crackmes.one/crackme/69e13f938afd9d6c48b488fd
 
-(archive password is `crackmes.one`). I've hosted an alternative link here in case the original link goes down (TODO).
+(archive password is `crackmes.one`). I've hosted an alternative link [here in the repo](https://github.com/markoglasgow/gemma_crackme_tutorial/blob/master/crackmepls.exe.bin) in case the original link goes down.
 
 - *Ghidra 12.04* is used for disassembly and decompilation. You'll need to install [OpenJDK 21](https://docs.aws.amazon.com/corretto/latest/corretto-21-ug/downloads-list.html) to use it:
 https://github.com/nationalsecurityagency/ghidra
