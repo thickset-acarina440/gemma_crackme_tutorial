@@ -367,7 +367,7 @@ int main()
 
 The first time it generated a solution, it was incorrect. I've included it in [tut1.txt](tut1.txt) in this repo. At first glance the solution _looks_ correct, but fails when we try it. AIs are fundamentally unreliable, and this is a perfect example of that. 
 
-However, no matter, we can simply open a new chat, copy-paste the prompt above, and try to get the AI to generate a new solution for us. In my case, I got a working solution on the second try:
+No matter, we can simply open a new chat, copy-paste the prompt above, and try to get the AI to generate a new solution for us. In my case, I got a working solution on the second try:
 
 ```
 #include <cstdio>
