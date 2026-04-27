@@ -1,4 +1,4 @@
-## Using Google's Gemma 4 E4B local AI model to Reverse Engineer a simple Crackme
+# Using Google's Gemma 4 E4B local AI model to Reverse Engineer a simple Crackme
 
 I was playing around with the new [Gemma E4B open weights local model](https://huggingface.co/google/gemma-4-E4B) which Google released, and to my surprise I was seeing a great deal of success in using it for local offline reverse engineering scenarios. I wanted to write this tutorial to spread the word that local AI is now good enough for many basic reversing tasks, and that things will probably rapidly improve from here on out.
 
@@ -30,7 +30,7 @@ Local AI models have their *downsides* though:
 
 - *Configuration* - Running local models is like trying to run Linux on a refurbished laptop vs walking into the Apple store and buying a clean new Macbook Air. The Codex and Claude Code experience is the Apple store experience of AI. The local AI model experience is the guy with a fedora in his garage banging on a janky computer trying to make it work. At a minimum, you have to worry about the following things:
     - Acquiring the right hardware 
-	- Drivers
+	- GPU Drivers
 	- Choose and configure the right inference server 
 	- Choose a model which will fit on your hardware, run fast enough that it's practical, and is intelligent enough for the task at hand 
 	- Use the right chat template with your model
@@ -53,10 +53,16 @@ https://github.com/nationalsecurityagency/ghidra
 - While working on this tutorial I vibe-coded with Claude Code a Ghidra plugin to rename functions and variables with AI. You can download the plugin from here:
 *TODO*
 
-To install it, simply unzip
-*TODO* 
+To install it, simply move the zip file `ghidra_12.0.4_PUBLIC_20260427_FastAIRenamerPlugin.zip` to `${GHIDRA_HOME}\Extensions\Ghidra`, then run Ghidra by running `${GHIDRA_HOME}\ghidraRun.bat`. To activate the plugin, in the initial Ghidra screen on the top menu select `File -> Install Extensions`, then in the plugin browser check the checkbox next to `FastAIRenamerPlugin`, then click `Ok`. Ghidra will prompt you to restart itself, so do that right away. 
 
-To configure the plugin to work with your local AI setup, TODO 
+To configure the plugin, next time Ghidra starts, on the top menu go to `Tools -> Run Tool -> CodeBrowser`. Ghidra will say "New Extensions detected. Would you like to configure them?". Click yes, then again check the checkbox next to `FastAIRenamerPlugin`, then click Ok. When the CodeBrowser opens, in the top menu click `Window -> Fast AI Renamer`, then click the `Config` button. Here you will be able to configure your AI model. Close the plugin window and the empty CodeBrowser window once done. 
+
+*Note*: if you have any problems loading the plugin, you might need to enable Developer mode in Ghidra (File -> Configure -> checkbox next to Developer)
+
+*Note*: you can always check if the plugin is loaded by going to the CodeBrowser, clicking File -> Configure -> Ghidra Core -> click the blue configure button -> filter by "FastAIRenamer" -> make sure the checkbox next to its name is checked. 
+
+*Note*: to uninstall the plugin, first open CodeBrowser, File -> Configure -> Ghidra Core -> click the blue configure button -> filter by "FastAIRenamer" -> uncheck -> ok. Close CodeBrowser, then in initial Ghidra window, File -> Install Extensions -> uncheck "FastAIRenamer". Finally close Ghidra and delete `ghidra_12.0.4_PUBLIC_20260427_FastAIRenamerPlugin.zip` from `${GHIDRA_HOME}\Extensions\Ghidra`. To make sure the extension is deleted, next time you run Ghidra, on initial window to go to Help -> Runtime Information -> Extension Points -> filter by "FastAIRenamer" and make sure nothing shows up. phew. 
+
 
 Finally, make sure you have `Visual Studio` or some other C++ dev environment set up so that you can vibe code a solution to the crackme when the time comes. 
 
