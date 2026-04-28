@@ -38,11 +38,11 @@ Local AI models have their *downsides* though:
 	- Prompt the model correctly
 	- Choose the right harness, or make your own harness if none of the existing ones work. 
 	
-It's not an easy journey, and many people give up and assume local AI models are not up to the task, because they never found the right combination of hardware/model/settings/prompting/harness to make them work for their task. While in many cases they're right, I hope this tutorial at least shines a light on how far local models have come, how they can with reverse engineering, and inspires people to give local AI a shot. 
+It's not an easy journey, and many people give up and assume local AI models are not up to the task, because they never found the right combination of hardware/model/settings/prompting/harness to make them work for their task. While in many cases they're right, I hope this tutorial at least shines a light on how far local models have come, how they can help with reverse engineering, and inspires people to give local AI a shot. 
 
 ## Reverse Enginering Setup
 
-- The crackme is an extremely simple Windows crackme downloaded from [Crackmes.one] here:
+- The crackme is an extremely simple Windows crackme downloaded from [Crackmes.one](https://crackmes.one/) here:
 https://crackmes.one/crackme/69e13f938afd9d6c48b488fd
 
 (archive password is `crackmes.one`). I've hosted an alternative link [here in the repo](https://github.com/markoglasgow/gemma_crackme_tutorial/blob/master/crackmepls.exe.bin) in case the original link goes down.
